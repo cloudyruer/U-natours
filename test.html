@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>test</h2>
+    <script>
+      class ClassMates {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        displayInfo() {
+          return this.name + 'is ' + this.age + ' years old!';
+        }
+      }
+
+      let classmate = new ClassMates('Mike', 15);
+      const a = classmate.displayInfo(); // result: Mike Will is 15 years old!
+      console.log(a);
+
+      classmate.test = function () {
+        return this.name + ' would be ' + (this.age + 1) + ' years old soon!';
+      };
+
+      const b = classmate.test();
+      console.log(b); //Mike would be 16 years old soon!
+    </script>
+  </body>
+</html>

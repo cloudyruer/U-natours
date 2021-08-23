@@ -5,10 +5,12 @@ const morgan = require('morgan');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 
+// console.log(tourRouter instanceof Function); //true
+
 // add a bunch of methods to our app once called NOTE express is a function
 const app = express();
 
-//  1. Middleware NOTE order matter NOTE 都要呼叫next()
+//  1. Middleware NOTE order matter NOTE 都要呼叫next() 除非是送出回應的最後一個
 
 // third party middleware
 app.use(morgan('dev'));
@@ -45,6 +47,7 @@ app.use((req, res, next) => {
 // 3) ROUTES
 
 // callback NOTE require from other module
+// 將路由套用至應用程式
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
