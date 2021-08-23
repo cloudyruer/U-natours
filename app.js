@@ -13,10 +13,18 @@ const app = express();
 //  1. Middleware NOTE order matter NOTE 都要呼叫next() 除非是送出回應的最後一個
 
 // third party middleware
-app.use(morgan('dev'));
-
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 // middleware 把內容加入到req.body
 app.use(express.json());
+
+// NOTE 066  -> only work for static file
+// no need public folder in the URL
+// since we open up a URL that cannot find in any routes
+// then it would look to that public folder we defined
+// and sets that folder to the root
+app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
   console.log('Hello From The MiddleWare😁');
