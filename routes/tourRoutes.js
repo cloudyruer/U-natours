@@ -1,8 +1,8 @@
 const express = require('express');
-const tourController = require('./../controllers/tourController');
+const tourController = require('../controllers/tourController');
 const router = express.Router();
 // function constructor
-console.log(router instanceof Function, '✔');
+// console.log(router instanceof Function, '✔');
 // The express.Router() function is used to create a new router object. This function is used when you want to create a new router object in your program to handle requests.
 
 // Use the express.Router class to create modular, mountable route handlers. A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.
@@ -12,7 +12,7 @@ console.log(router instanceof Function, '✔');
 
 // NOTE PARAM MIDDLEWARE and only specified in our tour router
 // router. param() function calls the tourController.checkID function, it calls it with those variables, as in: tourController.checkID(req,res,next,value); (就像event handler)
-router.param('id', tourController.checkID);
+// router.param('id', tourController.checkID);
 
 // 2. ROUTE HANDLERS
 // route handler
@@ -36,7 +36,7 @@ router.param('id', tourController.checkID);
 router
   .route('/')
   .get(tourController.getAllTours)
-  .post(tourController.checkBody, tourController.createTour);
+  .post(tourController.createTour);
 
 router
   .route('/:id')
